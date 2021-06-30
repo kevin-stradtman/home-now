@@ -1,8 +1,12 @@
 package com.stradtkt.homenow.model;
 
+import javax.persistence.*;
 import java.sql.Blob;
 
+@Entity
 public class Home {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String address1;
     private String address2;
@@ -16,6 +20,7 @@ public class Home {
     private Double lotSize;
     private Double sqft;
     private Double description;
+    private Boolean isHotDeal;
     private Blob photoMain;
     private Blob photo2;
     private Blob photo3;
@@ -31,7 +36,7 @@ public class Home {
 
     public Home(String address1, String address2, String city, Character state,
                 String zipCode, String price, Integer beds, Double baths, Integer garages,
-                Double lotSize, Double sqft, Double description, Blob photoMain, Blob photo2,
+                Double lotSize, Double sqft, Double description, Boolean isHotDeal, Blob photoMain, Blob photo2,
                 Blob photo3, Blob photo4, Blob photo5, Blob photo6, Blob photo7, Blob photo8, Blob photo9) {
         this.address1 = address1;
         this.address2 = address2;
@@ -45,6 +50,7 @@ public class Home {
         this.lotSize = lotSize;
         this.sqft = sqft;
         this.description = description;
+        this.isHotDeal = isHotDeal;
         this.photoMain = photoMain;
         this.photo2 = photo2;
         this.photo3 = photo3;
@@ -54,6 +60,18 @@ public class Home {
         this.photo7 = photo7;
         this.photo8 = photo8;
         this.photo9 = photo9;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
+    private Owner owner;
+
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public Long getId() {
@@ -160,6 +178,14 @@ public class Home {
         this.description = description;
     }
 
+    public Boolean getHotDeal() {
+        return isHotDeal;
+    }
+
+    public void setHotDeal(Boolean hotDeal) {
+        isHotDeal = hotDeal;
+    }
+
     public Blob getPhotoMain() {
         return photoMain;
     }
@@ -248,6 +274,7 @@ public class Home {
                 ", lotSize=" + lotSize +
                 ", sqft=" + sqft +
                 ", description=" + description +
+                ", isHotDeal=" + isHotDeal +
                 ", photoMain=" + photoMain +
                 ", photo2=" + photo2 +
                 ", photo3=" + photo3 +
@@ -259,6 +286,4 @@ public class Home {
                 ", photo9=" + photo9 +
                 '}';
     }
-
-
 }
