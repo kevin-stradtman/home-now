@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Home Now | A Home</title>
+    <link th:replace="fragments/styles.html :: styles"/>
+</head>
+<body>
+<div th:replace="fragments/navbar.html :: navbar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Add Your Home!</h4>
+                    <p class="category">Let other people rent your home and look at it on this site!</p>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{${action}}" method="post" th:object="${home}" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" th:field="*{address1}" placeholder="Address 1" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" th:field="*{address2}" placeholder="Address 2" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" th:field="*{city}" placeholder="City" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" th:field="*{state}" placeholder="State" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" th:field="*{zipCode}" placeholder="Zip Code" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="number" th:field="*{price}" placeholder="Price" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="number" th:field="*{beds}" placeholder="Beds" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="number" th:field="*{baths}" placeholder="Baths" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="number" th:field="*{garages}" placeholder="Garages" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="number" th:field="*{lotSize}" placeholder="Lot Size" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="number" th:field="*{sqft}" placeholder="Sqft" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <textarea th:field="*{description}" id="description" cols="30" rows="10" class="form-control" placeholder="Description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Main Photo" />
+                                <input type="file" class="inputFileHidden" name="photoMain" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox"/>
+                                    Is It A Hot Deal
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Photo 2" />
+                                <input type="file" class="inputFileHidden" name="photo2" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Photo 3" />
+                                <input type="file" class="inputFileHidden" name="photo3" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Photo 4" />
+                                <input type="file" class="inputFileHidden" name="photo4" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Photo 5" />
+                                <input type="file" class="inputFileHidden" name="photo5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Photo 6" />
+                                <input type="file" class="inputFileHidden" name="photo6" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Photo 7" />
+                                <input type="file" class="inputFileHidden" name="photo6" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Photo 8" />
+                                <input type="file" class="inputFileHidden" name="photo8" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group form-file-upload form-file-simple">
+                                <input type="text" class="form-control inputFileVisible" placeholder="Photo 9" />
+                                <input type="file" class="inputFileHidden" name="photo9" />
+                            </div>
+                        </div>
+                    </div>
+                        <input type="submit" class="btn btn-raised btn-info btn-round mr-auto ml-auto mb-5 mt-2" value="Show Your House To The World">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer.html :: footer"></div>
+<div th:replace="fragments/scripts.html :: scripts"></div>
+</body>
+</html>
